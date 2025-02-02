@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>venue</title>
+</head>
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerParty" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerParty">
+            <a class="navbar-brand text-warning" href="/home">Let's Party!</a>
+            <ul class="navbar-nav me-auto my-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/venuedetails">zaaldetails</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">over mij</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<body>
+<main class="container" th:object="${venue}">
+    <h2 th:text="*{venueName}">De Club</h2>
+
+    <p>Mechelen<br>zie <a th:href="*{linkMoreInfo}"> https://transitm.mechelen.be/de-club</a></p>
+    <h1>Faciliteiten:</h1>
+    <div class="facility-container">
+        <div class="facility-item">Max <span th:text="${max_persons}">150</span> personen</div>
+        <div class="facility-item" th:text="${public_transport_distance}">2km van openbaar vervoer</div>
+        <div class="facility-item">Eten voorzien: <span th:text="${food_provided ? 'ja' : 'nee'}">nee</span></div>
+        <div class="facility-item">Binnen: <span th:text="${indoor ? 'ja' : 'nee'}">ja</span></div>
+        <div class="facility-item">Buiten: <span th:text="${outdoor ? 'ja' : 'nee'}">nee</span></div>
+        <div class="facility-item">Gratis parking: <span th:text="${free_parking ? 'ja' : 'nee'}">ja</span></div>
+    </div>
+</main>
+<footer class="footer mt-auto pt-2 border-top text-center">
+    &copy;ThomasMore
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</body>
+</html>
